@@ -36,6 +36,8 @@ class Ohmu(object):
         self.screen.tick(start, self.scanner)
         while self.keep_running:
             self.process_input(self.screen.get_key_sequence())
+            if self.scanner.finished:
+                break
             if not self.keep_running:
                 break
             now = time.time()

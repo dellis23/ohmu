@@ -47,10 +47,12 @@ class Scanner(Thread):
         path = abspath(root_path)
         self.root = File(basename(path), is_dir=True, path=path)
         self.exception = None
+        self.finished = False
 
     def run(self):
         try:
             self.scan(self.root)
+            self.finished = True
         except BaseException as e:
             self.exception = e
             raise
